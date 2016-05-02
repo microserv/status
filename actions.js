@@ -37,7 +37,7 @@ export function receiveDocs(api, response) {
     type: RECEIVE_DOCS,
     api,
     response: response,
-    receivedAt: Date.now()
+    receivedAt: !(response.error) ? Date.now() : null
   }
 }
 
@@ -56,8 +56,12 @@ export function fetchDocs(api) {
     console.log('world', api)
     // Map of available APIs
     const API_MAP = {
-      microauth: 'http://127.0.0.1:8000/api/v1/?format=json',
-      templates: 'http://127.0.0.1:8000/api/v1/?format=json',
+      microauth: 'http://127.0.0.1:8000/api/?format=json',
+      templates: 'http://127.0.0.1:8003/api/?format=json',
+    }
+    
+    if (API_MAP[api] === undefined) {
+      return {}
     }
     
     // Inform app state about fetching docs
@@ -65,6 +69,10 @@ export function fetchDocs(api) {
     
     return fetch(API_MAP[api])
       .then(response => response.json())
+      .catch(error => { 
+        console.log(error)
+        return {error: error}
+      })
       .then(response => dispatch(receiveDocs(api, response))
       )
   }

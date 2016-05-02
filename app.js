@@ -31,7 +31,7 @@ let unsubscribe = store.subscribe(() =>
 // Automatically populating list
 store.dispatch(addApi('templates', 1))
 store.dispatch(addApi('microauth', 2))
-store.dispatch(addApi('snek', 3))
+// store.dispatch(addApi('snek', 3))
 
 store.dispatch(selectApi('microauth'))
 store.dispatch(fetchDocs('microauth')).then(() => 

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { List } from 'react-mdl'
 
-import Api from './Api'
+import Api from '../containers/Api'
 
 const ApiList = ({ apis, onApiClick }) => (
   <div>
