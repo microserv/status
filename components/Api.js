@@ -3,7 +3,12 @@ import React, { PropTypes } from 'react'
 const Api = ({ onClick, name }) => (
   <li
     onClick={onClick}
-    >{name}
+  >
+    <a 
+      href="#"
+    >
+      {name}
+    </a>
   </li>
 )
 

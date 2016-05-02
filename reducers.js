@@ -12,14 +12,65 @@ function apis(state = [], action) {
           name: action.name
         }
       ]
-      break;
+      break
     default:
-      return []
+      return state
   }
 }
 
+function selectedApi(state = 'templates', action) {
+  switch (action.type) {
+    case SELECT_API:
+      return action.api
+      break
+    default:
+      return state
+  }
+}
+
+function docs(state = {
+  isFetching: false,
+  didInvalidate: false,
+  items: []
+}, action) {
+  switch (action.type) {
+    case REQUEST_DOCS:
+      return Object.assign({}, state, {
+        isFetching: true,
+        didInvalidate: false
+      })
+      break
+    case RECEIVE_DOCS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        didInvalidate: false,
+        items: action,
+        receivedAt: action.receivedAt
+      })
+      break
+    default:
+      return state
+  }
+}
+
+function docsByApi(state = {}, action) {
+  switch (action.type) {
+    case REQUEST_DOCS:
+    case RECEIVE_DOCS:
+      return Object.assign({}, state, {
+        [action.api]: docs(state[action.api], action)
+      })
+      break
+    default:
+      return state
+  }
+}
+
+
 const rootReducer = combineReducers({
-  apis
+  apis,
+  selectedApi,
+  docsByApi
 })
 
 export default rootReducer

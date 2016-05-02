@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { fetchDocs } from '../actions'
 // import Link from '../components/Link'
 import ApiList from '../components/ApiList'
 
@@ -14,9 +15,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onApiClick: (id) => {
-      console.log('clicked api', id)
-      // dispatch()
+    onApiClick: (e, api) => {
+      e.preventDefault()
+      dispatch(fetchDocs(api.name))
     }
   }
 }

@@ -8,7 +8,7 @@ const ApiList = ({ apis, onApiClick }) => (
       <Api
         key={api.id}
         {...api}
-        onClick={() => onApiClick(api.id)}
+        onClick={(e) => onApiClick(e, api)}
       />  
     )}
   </ul>
