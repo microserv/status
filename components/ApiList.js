@@ -1,17 +1,21 @@
 import React, { PropTypes } from 'react'
+import { List } from 'react-mdl'
 
 import Api from './Api'
 
 const ApiList = ({ apis, onApiClick }) => (
-  <ul>
-    {apis.map(api =>
-      <Api
-        key={api.id}
-        {...api}
-        onClick={(e) => onApiClick(e, api)}
-      />  
-    )}
-  </ul>
+  <div>
+    <h3>List of APIs</h3>
+    <List>
+      {apis.map(api =>
+        <Api
+          key={api.id}
+          {...api}
+          onClick={(e) => onApiClick(e, api)}
+        />  
+      )}
+    </List>
+  </div>
 )
 
 ApiList.propTypes = {

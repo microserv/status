@@ -44,7 +44,7 @@ function docs(state = {
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
-        items: action,
+        items: action.response,
         receivedAt: action.receivedAt
       })
       break
