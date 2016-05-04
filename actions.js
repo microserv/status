@@ -5,10 +5,10 @@ import fetch from 'isomorphic-fetch'
  */
 export const ADD_API = 'ADD_API';
 
-export function addApi(name, id) {
+export function addApi(name, id, uri) {
   return {
     type: ADD_API,
-    name, id
+    name, id, uri
   }
 }
 
@@ -51,23 +51,25 @@ export function renderSwagger(api) {
 }
 
 export function fetchDocs(api) {
-  console.log('hello', api)
-  return function(dispatch) {
-    console.log('world', api)
-    // Map of available APIs
-    const API_MAP = {
-      microauth: 'http://127.0.0.1:8000/api/?format=json',
-      templates: 'http://127.0.0.1:8003/api/?format=json',
+  return function(dispatch, getState) {
+    const state = getState()
+    
+    let apiUri = null
+    // Find the URI of selectedApi
+    for (let i = 0; i < state.apis.length; i++) {
+      if (state.apis[i].name === api) {
+        apiUri = state.apis[i].uri
+      }
     }
     
-    if (API_MAP[api] === undefined) {
+    if (apiUri === null) {
       return {}
     }
     
     // Inform app state about fetching docs
     dispatch(requestDocs(api))
     
-    return fetch(API_MAP[api])
+    return fetch(apiUri)
       .then(response => response.json())
       .catch(error => { 
         console.log(error)

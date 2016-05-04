@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { fetchDocs, selectApi } from '../actions'
-import ApiListItem from '../components/ApiListItem'
+import ApiDocs from '../components/ApiDocs'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -14,9 +14,9 @@ const mapDispatchToProps = (dispatch) => {
   return {}
 }
 
-const ApiListItemLogic = connect(
+const ApiDocsLogic = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ApiListItem)
+)(ApiDocs)
 
-export default ApiListItemLogic
+export default ApiDocsLogic

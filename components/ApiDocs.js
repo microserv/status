@@ -8,6 +8,10 @@ const ApiDocs = () => (
 )
 
 ApiDocs.propTypes = {
+  apis: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
+  })),
   docsByApi: PropTypes.object.isRequired,
   selectedApi: PropTypes.string.isRequired
 }

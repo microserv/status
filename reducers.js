@@ -9,7 +9,8 @@ function apis(state = [], action) {
         ...state,
         {
           id: action.id,
-          name: action.name
+          name: action.name,
+          uri: action.uri
         }
       ]
       break

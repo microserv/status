@@ -29,8 +29,8 @@ let unsubscribe = store.subscribe(() =>
 )
 
 // Automatically populating list
-store.dispatch(addApi('templates', 1))
-store.dispatch(addApi('microauth', 2))
+store.dispatch(addApi('templates', 1, "http://127.0.0.1:8000/api/?format=json"))
+store.dispatch(addApi('microauth', 2, "http://127.0.0.1:8003/api/?format=json"))
 // store.dispatch(addApi('snek', 3))
 
 store.dispatch(selectApi('microauth'))

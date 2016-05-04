@@ -4,18 +4,14 @@ import Api from '../components/Api'
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    apis: state.apis,
     docsByApi: state.docsByApi,
     selectedApi: state.selectedApi
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    // onApiClick: (e, api) => {
-    //   e.preventDefault()
-    //   dispatch(fetchDocs(api.name))
-    // }
-  }
+  return {}
 }
 
 const ApiLogic = connect(

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Icon, ListItem, ListItemAction, ListItemContent, Spinner } from 'react-mdl'
-// error, done, replay
+
 const Api = ({ onClick, name, docsByApi, selectedApi }) => (
   <ListItem shadow={0}>
     { (docsByApi[name].isFetching) ? 
@@ -10,7 +10,7 @@ const Api = ({ onClick, name, docsByApi, selectedApi }) => (
     {name}
     <ListItemAction onClick={onClick}>
       <a href="#">
-        Docs
+        Show
       </a>
     </ListItemAction>
   </ListItem>
