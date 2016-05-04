@@ -1,24 +1,38 @@
 import React, { PropTypes } from 'react'
-import { Icon, ListItem, ListItemAction, ListItemContent, Spinner } from 'react-mdl'
-// error, done, replay
-const Api = ({ onClick, name, docsByApi, selectedApi }) => (
-  <ListItem shadow={0}>
-    { (docsByApi[name].isFetching) ? 
-      <Spinner /> : <Icon name={(docsByApi[name].receivedAt) ? 
-      "done" : "error"} />
-    }
-    {name}
-    <ListItemAction onClick={onClick}>
-      <a href="#">
-        Docs
-      </a>
-    </ListItemAction>
-  </ListItem>
-)
+import { ProgressBar, Tabs, Tab } from 'react-mdl'
+import ApiDocs from './ApiDocs'
 
-Api.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+class Api extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { 
+      activeTab: 1,
+    }
+  }
+  render() {
+    return (
+      <div>
+        <Tabs 
+          activeTab={this.state.activeTab}
+          onChange={ (tabId) => this.setState({ activeTab: tabId }) }>
+          <Tab>HTML</Tab>
+          <Tab>JSON</Tab>
+        </Tabs>
+        <section>
+          <h3>{this.props.selectedApi}</h3>
+          <div className="content">
+            { 
+              (this.props.docsByApi[this.props.selectedApi].isFetching) ?
+              <ProgressBar indeterminate /> : <ApiDocs />
+            }
+          </div>
+        </section>
+      </div>
+    )
+  }
+}
+
+ApiDocs.propTypes = {
   docsByApi: PropTypes.object.isRequired,
   selectedApi: PropTypes.string.isRequired
 }

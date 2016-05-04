@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Cell, Grid } from 'react-mdl'
 import ApiListLogic from '../containers/ApiList'
-import ApiDocsLogic from '../containers/ApiDocsLogic'
+import ApiLogic from '../containers/ApiLogic'
 
 const App = () => (
   <div>
@@ -10,7 +10,7 @@ const App = () => (
         <ApiListLogic />
       </Cell>
       <Cell col={10} phone={12}>
-        <ApiDocsLogic />
+        <ApiLogic />
       </Cell>
     </Grid>
   </div>

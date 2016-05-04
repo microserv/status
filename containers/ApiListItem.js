@@ -1,6 +1,10 @@
 import { connect } from 'react-redux'
-import { fetchDocs } from '../actions'
-import ApiDocs from '../components/ApiDocs'
+import { fetchDocs, selectApi } from '../actions'
+import ApiListItem from '../components/ApiListItem'
+
+const getApis = (apis) => {
+  return apis
+}
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -13,14 +17,15 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // onApiClick: (e, api) => {
     //   e.preventDefault()
+    //   dispatch(selectApi(api.name))
     //   dispatch(fetchDocs(api.name))
     // }
   }
 }
 
-const ApiDocsLogic = connect(
+const ApiListItemLogic = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ApiDocs)
+)(ApiListItem)
 
-export default ApiDocsLogic
+export default ApiListItemLogic
