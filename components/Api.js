@@ -10,7 +10,10 @@ class Api extends React.Component {
     }
   }
   render() {
-    let isFetching = this.props.docsByApi[this.props.selectedApi].isFetching
+    let isFetching = false
+    if (this.props.docsByApi[this.props.selectedApi] !== undefined) {
+      isFetching = this.props.docsByApi[this.props.selectedApi].isFetching
+    }
     let thisApi = null
     for (let i = 0; i < this.props.apis.length; i++) {
       if (this.props.apis[i].name === this.props.selectedApi) {
@@ -32,8 +35,8 @@ class Api extends React.Component {
               <ProgressBar indeterminate /> : <span></span>
             } { (!isFetching && this.state.activeTab === 0) ?
               <p>
-                API URL: <a href={thisApi.uri} target="_blank">
-                  {thisApi.uri}
+                API URL: <a href={thisApi.apiUri} target="_blank">
+                  {thisApi.apiUri}
                 </a>
               </p> : 
               <ApiDocsLogic />

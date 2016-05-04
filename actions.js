@@ -5,10 +5,10 @@ import fetch from 'isomorphic-fetch'
  */
 export const ADD_API = 'ADD_API';
 
-export function addApi(name, id, uri) {
+export function addApi(name, id, apiUri) {
   return {
     type: ADD_API,
-    name, id, uri
+    name, id, apiUri
   }
 }
 
@@ -58,7 +58,7 @@ export function fetchDocs(api) {
     // Find the URI of selectedApi
     for (let i = 0; i < state.apis.length; i++) {
       if (state.apis[i].name === api) {
-        apiUri = state.apis[i].uri
+        apiUri = state.apis[i].apiUri
       }
     }
     

@@ -28,20 +28,23 @@ let unsubscribe = store.subscribe(() =>
   console.log(store.getState())
 )
 
-// Automatically populating list
-store.dispatch(addApi('templates', 1, "http://127.0.0.1:8000/api/?format=json"))
-store.dispatch(addApi('microauth', 2, "http://127.0.0.1:8003/api/?format=json"))
-// store.dispatch(addApi('snek', 3))
+// Add APIs here
+const APIs = [
+  {
+    id: 1, name: 'templates', apiUri: 'http://127.0.0.1:8000/api/?format=json'
+  },
+  {
+    id: 2, name: 'microauth', apiUri: 'http://127.0.0.1:8003/api/?format=json'
+  }
+]
 
-store.dispatch(selectApi('microauth'))
-store.dispatch(fetchDocs('microauth')).then(() => 
-  console.log(store.getState())
-)
-
-store.dispatch(selectApi('templates'))
-store.dispatch(fetchDocs('templates')).then(() => 
-  console.log(store.getState())
-)
+// Automatically populate the APIs
+for (let i = 0; i < APIs.length; i++) {
+  let api = APIs[i]
+  store.dispatch(addApi(api.name, api.id, api.apiUri))
+  // Get their initial status
+  store.dispatch(fetchDocs(api.name))
+}
 
 unsubscribe()
 

@@ -10,7 +10,7 @@ function apis(state = [], action) {
         {
           id: action.id,
           name: action.name,
-          uri: action.uri
+          apiUri: action.apiUri
         }
       ]
       break
