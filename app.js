@@ -30,12 +30,13 @@ let unsubscribe = store.subscribe(() =>
 
 // Add APIs here
 const APIs = [
-  {
-    id: 1, name: 'templates', apiUri: 'http://127.0.0.1:8000/api/?format=json'
-  },
-  {
-    id: 2, name: 'microauth', apiUri: 'http://127.0.0.1:8003/api/?format=json'
-  }
+  { id: 1, name: 'microauth', apiUri: 'http://despina.128.no:33193' },
+  { id: 2, name: 'search', apiUri: 'http://despina.128.no:33196' },
+  { id: 3, name: 'spell-check', apiUri: 'http://despina.128.no:33199' },
+  { id: 4, name: 'publish-django', apiUri: 'http://despina.128.no:33209' },
+  { id: 5, name: 'templates', apiUri: 'http://despina.128.no:33225' },
+  { id: 6, name: 'frontend', apiUri: 'http://despina.128.no:33228' },
+  { id: 7, name: 'indexer', apiUri: 'http://despina.128.no:33252' }
 ]
 
 // Automatically populate the APIs
