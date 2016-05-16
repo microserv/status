@@ -69,8 +69,13 @@ export function fetchDocs(api) {
     // Inform app state about fetching docs
     dispatch(requestDocs(api))
     
-    return fetch(apiUri)
-      .then(response => response.json())
+    let fetchOptions = {
+      mode: 'no-cors',
+      method: 'HEAD'
+    }
+
+    return fetch(apiUri, fetchOptions)
+      .then(response => response)
       .catch(error => { 
         console.log(error)
         return {error: error}
