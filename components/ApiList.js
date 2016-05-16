@@ -1,11 +1,17 @@
 import React, { PropTypes } from 'react'
-import { List } from 'react-mdl'
+import { List, IconButton } from 'react-mdl'
 
 import ApiListItemLogic from '../containers/ApiListItem'
 
-const ApiList = ({ apis, onApiClick }) => (
+const ApiList = ({ apis, onApiClick, onRefreshClick }) => (
   <div>
-    <h3>List of APIs</h3>
+    <h3>
+      List of APIs
+      <IconButton
+        name="cached"
+        onClick={ (e) => onRefreshClick(e) }
+        />
+    </h3>
     <List>
       {apis.map(api =>
         <ApiListItemLogic
@@ -23,7 +29,8 @@ ApiList.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  onApiClick: PropTypes.func.isRequired
+  onApiClick: PropTypes.func.isRequired,
+  onRefreshClick: PropTypes.func.isRequired
 }
 
 export default ApiList
