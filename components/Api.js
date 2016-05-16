@@ -38,6 +38,28 @@ class Api extends React.Component {
                 API URL: <a href={thisApi.apiUri} target="_blank">
                   {thisApi.apiUri}
                 </a>
+                <h4>Response from API</h4>
+                { ( this.props.docsByApi[this.props.selectedApi].items.type === 'cors' ) ?
+                <pre>
+                  Request type: {this.props.docsByApi[this.props.selectedApi].items.type}
+                  <br />
+                  Response 200 OK: { (this.props.docsByApi[this.props.selectedApi].items.ok) ? 'OK' : 'Not OK' }
+                  <br />
+                  HTTP Status Code: {this.props.docsByApi[this.props.selectedApi].items.status}
+                  <br />
+                  HTTP Status Text: {this.props.docsByApi[this.props.selectedApi].items.statusText}
+                </pre>
+                :
+                <pre>
+                  Request type: {this.props.docsByApi[this.props.selectedApi].items.type}
+                  <br />
+                  Response 200 OK: Not available when requesting opaque
+                  <br />
+                  HTTP Status Code: Not available when requesting opaque
+                  <br />
+                  HTTP Status Text: Not available when requesting opaque
+                </pre>
+                }
               </p> : 
               <ApiDocsLogic />
             }
