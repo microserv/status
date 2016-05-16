@@ -34,10 +34,12 @@ class Api extends React.Component {
             { (isFetching) ?
               <ProgressBar indeterminate /> : <span></span>
             } { (!isFetching && this.state.activeTab === 0) ?
-              <p>
-                API URL: <a href={thisApi.apiUri} target="_blank">
-                  {thisApi.apiUri}
-                </a>
+              <div>
+                <p>
+                  API URL: <a href={thisApi.apiUri} target="_blank">
+                    {thisApi.apiUri}
+                  </a>
+                </p>
                 <h4>Response from API</h4>
                 { ( this.props.docsByApi[this.props.selectedApi].items.type === 'cors' ) ?
                 <pre>
@@ -60,8 +62,7 @@ class Api extends React.Component {
                   HTTP Status Text: Not available when requesting opaque
                 </pre>
                 }
-              </p> : 
-              <ApiDocsLogic />
+              </div> : <ApiDocsLogic />
             }
           </div>
         </section>
