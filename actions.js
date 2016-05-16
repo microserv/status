@@ -79,3 +79,12 @@ export function fetchDocs(api) {
       )
   }
 }
+
+export function refreshAllApis() {
+  return function (dispatch, getState) {
+    const state = getState()
+    state.apis.forEach(function (api) {
+      dispatch(fetchDocs(api.name))
+    })
+  }
+}
