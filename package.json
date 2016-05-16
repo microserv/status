@@ -22,7 +22,7 @@
     "webpack": "^1.13.0"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config webpack.config.prod.js",
     "watch": "webpack --watch"
   }
 }
