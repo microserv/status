@@ -30,13 +30,13 @@ let unsubscribe = store.subscribe(() =>
 
 // Add APIs here
 const APIs = [
-  { id: 1, name: 'microauth', apiUri: 'http://despina.128.no:33193' },
-  { id: 2, name: 'search', apiUri: 'http://despina.128.no:33196' },
-  { id: 3, name: 'spell-check', apiUri: 'http://despina.128.no:33199' },
-  { id: 4, name: 'publish-django', apiUri: 'http://despina.128.no:33209' },
-  { id: 5, name: 'templates', apiUri: 'http://despina.128.no:33225' },
-  { id: 6, name: 'frontend', apiUri: 'http://despina.128.no:33228' },
-  { id: 7, name: 'indexer', apiUri: 'http://despina.128.no:33252' }
+  { id: 1, name: 'microauth', apiUri: 'https://despina.128.no/auth' },
+  { id: 2, name: 'search', apiUri: 'https://despina.128.no/api/search' },
+  { id: 3, name: 'spell-check', apiUri: 'https://despina.128.no/spell' },
+  { id: 4, name: 'publish-django', apiUri: 'https://despina.128.no/publish' },
+  { id: 5, name: 'templates', apiUri: 'https://despina.128.no/templates' },
+  { id: 6, name: 'frontend', apiUri: 'https://despina.128.no/' },
+  { id: 7, name: 'indexer', apiUri: 'https://despina.128.no/indexer' }
 ]
 
 // Automatically populate the APIs
