@@ -10,10 +10,13 @@ const mapStateToProps = (state, ownProps) => {
       thisApi = currentState.apis[i]
     }
   }
+  let swaggerDocs = thisApi.apiUri + "/static/swagger.json"
   return {
     apis: state.apis,
     docsByApi: state.docsByApi,
     selectedApi: state.selectedApi,
+    swaggerClient: 'https://despina.128.no/swagger/',
+    swaggerDocs: swaggerDocs,
     thisApi: thisApi
   }
 }
